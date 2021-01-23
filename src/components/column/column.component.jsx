@@ -4,8 +4,8 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import './column.styles.css'
 
 export const Column = props =>(
-    console.log(props.cardIds),
-    console.log(props.title),
+    // console.log(props.cardIds),
+    // console.log(props.title),
   
     // <DragDropContext onDragEnd={props.handleOnDragEnd}>
      <Droppable droppableId={props.title}>
@@ -36,7 +36,7 @@ export const Column = props =>(
                 
             
          
-                {props.provided.placeholder}
+        {provided.placeholder}
         </div>
 
         )} 

@@ -2,8 +2,10 @@ import React from 'react';
 import { Column } from '../column/column.component';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 export const Board = props => (
-    <DragDropContext >
-      <Droppable droppableId={props.columns[1].title}>
+
+    console.log(props.columns.title),
+    <DragDropContext onDragEnd={props.handleOnDragEnd}>
+      <Droppable droppableId='board'>
         {(provided) => (
         <div className='board' {...provided.droppableProps} ref={provided.innerRef}>
             {props.columns.map(column =>(

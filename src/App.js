@@ -52,16 +52,37 @@ class App extends Component {
 
 
 handleOnDragEnd = e => {
+  if (!e.destination) {
+   
+    return
+  }
 
-  const i = this.state.columnsOrder[e.destination.droppableId]
+  const dropIndex = this.state.columnsOrder[e.destination.droppableId]
+  const dropItems = Array.from(this.state.columns[dropIndex].cardIds);
 
-  const items = Array.from(this.state.columns[i].cardIds);
+  let columns = [...this.state.columns]
+  if (e.source.droppableId !== e.destination.droppableId) {
+ 
+    const sourceIndex = this.state.columnsOrder[e.source.droppableId]
+    const sourceItems = Array.from(this.state.columns[sourceIndex].cardIds)
+    const [sourceSplice] = sourceItems.splice(e.source.index, 1)
+    dropItems.splice(e.destination.index, 0, sourceSplice)
+    console.log(sourceItems, "source")
+    console.log(dropItems, "Drop")
+    
+    columns[dropIndex].cardIds = dropItems
+    columns[sourceIndex].cardIds= sourceItems
 
-  
-  const [reorderedItem] = items.splice(e.source.index, 1);
-  items.splice(e.destination.index, 0, reorderedItem);
-  let columns = [...this.state.columns];
-  columns[i].cardIds = items
+  } else {
+
+ 
+  const [reorderedItem] = dropItems.splice(e.source.index, 1);
+ 
+  dropItems.splice(e.destination.index, 0, reorderedItem);
+ 
+  columns[dropIndex].cardIds = dropItems
+  }
+
   this.setState({
     columns: columns
   })
@@ -69,8 +90,8 @@ handleOnDragEnd = e => {
   
 }
 handleTextArea = e => {
-  console.log("i did it")
-  // this.setState({})
+  
+
 }
 
 handleAddButton = e => {
@@ -103,7 +124,7 @@ render(){
       cards = {this.state.cards}
       handleTextArea={this.handleTextArea}
       handleAddButton={this.handleAddButton}
-      // handleOnDragEnd={this.handleOnDragEnd}
+      handleOnDragEnd={this.handleOnDragEnd}
     />
 
     </div>
