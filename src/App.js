@@ -23,6 +23,11 @@ class App extends Component {
         cardIds:[3]
       }
     ],
+    columnsOrder: {
+     'Pending': 0,
+     'InProgess':1,
+     'Completed':2
+    },
     cards: {
       1:{
       title: 'card 1',
@@ -38,12 +43,31 @@ class App extends Component {
         },
       },
       currentHighestId: 3,
+
   }
   
 
   
 }
 
+
+handleOnDragEnd = e => {
+
+  const i = this.state.columnsOrder[e.destination.droppableId]
+
+  const items = Array.from(this.state.columns[i].cardIds);
+
+  
+  const [reorderedItem] = items.splice(e.source.index, 1);
+  items.splice(e.destination.index, 0, reorderedItem);
+  let columns = [...this.state.columns];
+  columns[i].cardIds = items
+  this.setState({
+    columns: columns
+  })
+
+  
+}
 handleTextArea = e => {
   console.log("i did it")
   // this.setState({})
@@ -79,6 +103,7 @@ render(){
       cards = {this.state.cards}
       handleTextArea={this.handleTextArea}
       handleAddButton={this.handleAddButton}
+      handleOnDragEnd={this.handleOnDragEnd}
     />
 
     </div>

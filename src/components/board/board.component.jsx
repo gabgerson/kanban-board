@@ -11,7 +11,7 @@ export const Board = props => (
             // console.log(column.cardIds),
             <Column handleTextArea={props.handleTextArea} 
                     handleAddButton={props.handleAddButton}
-                 
+                    handleOnDragEnd={props.handleOnDragEnd}
                     cards ={props.cards} 
                     cardIds={column.cardIds} 
                     key={column.id} 
