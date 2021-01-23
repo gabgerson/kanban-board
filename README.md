@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Kanban Board
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Project is still in development mode. 
+Clone project and run  npm start see more below.
 
 ## Available Scripts
 
