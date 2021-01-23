@@ -103,7 +103,7 @@ render(){
       cards = {this.state.cards}
       handleTextArea={this.handleTextArea}
       handleAddButton={this.handleAddButton}
-      handleOnDragEnd={this.handleOnDragEnd}
+      // handleOnDragEnd={this.handleOnDragEnd}
     />
 
     </div>
