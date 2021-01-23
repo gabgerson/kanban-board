@@ -1,0 +1,14 @@
+.column{
+    width: 30%;
+    /* padding-left: 1%; */
+    float: left;
+    display: flex;
+    flex-direction: column;
+    background-color:grey;
+    margin:0 auto;
+}
+
+.column button {
+
+    font-size: 25px;
+}
