@@ -8,9 +8,9 @@ export const Column = props =>(
     console.log(props.title),
   
     // <DragDropContext onDragEnd={props.handleOnDragEnd}>
-    //   <Droppable droppableId={props.title}>
-    //     {(provided) => (
-        <div className='column' {...props.provided.droppableProps} ref={props.innerRef}>
+     <Droppable droppableId={props.title}>
+        {(provided) => (
+        <div className='column' {...provided.droppableProps} ref={provided.innerRef}>
             
             <h1> {props.title} </h1>
             <button id={props.id} onClick={props.handleAddButton}>+</button>
@@ -36,11 +36,11 @@ export const Column = props =>(
                 
             
          
-            {props.provided.placeholder}
+                {props.provided.placeholder}
         </div>
 
-    //     {/* )} */}
-    //   {/* </Droppable> */}
+        )} 
+       </Droppable> 
     // </DragDropContext>
     
     

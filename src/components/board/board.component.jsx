@@ -5,7 +5,7 @@ export const Board = props => (
     <DragDropContext >
       <Droppable droppableId={props.columns[1].title}>
         {(provided) => (
-        <div className='board'>
+        <div className='board' {...provided.droppableProps} ref={provided.innerRef}>
             {props.columns.map(column =>(
                 // console.log(column.id),
                 // console.log(column.title),
